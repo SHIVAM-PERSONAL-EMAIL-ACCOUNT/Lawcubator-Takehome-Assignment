@@ -17,6 +17,7 @@
 ## Technologies Used
 
 - Spring Boot
+- Spring Data JPA
 - Hibernate
 - H2 In-Memory Database
 
