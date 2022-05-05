@@ -45,12 +45,14 @@ public class ProjectController {
 	 * saved is not same as the current User
 	 */
 	@PostMapping("project/new")
-	private Project saveProject(@RequestBody Project projectToBeSaved, @RequestParam("user") String currentUsername) {
+	private Project saveProject(@RequestBody Project projectToBeSaved, 
+				    @RequestParam("user") String currentUsername) {
 		if (projectToBeSaved.getUser() == null) {
 			throw new IllegalArgumentException("User credentials are invalid");
 		}
 		
 		User currentUser = userService.findUserByUsername(currentUsername);
+		
 		if (currentUser.getId() != projectToBeSaved.getUser().getId() ||
 			!currentUser.getUsername().equals(projectToBeSaved.getUser().getUsername()) ||
 			!currentUser.getPassword().equals(projectToBeSaved.getUser().getPassword())) {
@@ -58,13 +60,14 @@ public class ProjectController {
 		}
 		
 		String name = projectToBeSaved.getName();
+		
 		if (name == null || name.trim().isEmpty()) {
 			throw new IllegalArgumentException("Project name cannot be null or empty");
 		}
 		
 		try {
-		Project savedProject = projectService.saveProject(projectToBeSaved);
-		return savedProject; 
+			Project savedProject = projectService.saveProject(projectToBeSaved);
+			return savedProject; 
 		} catch (DataIntegrityViolationException ex) {
 			throw new DataIntegrityViolationException("Project name has already been taken. Try a new one.");
 		}
@@ -98,7 +101,8 @@ public class ProjectController {
 	 * @throws IllegalArgumentException - if the requested User was not present in the database
 	 */
 	@GetMapping("projects/all")
-	private Set<Project> findAllProjectsOfRequestedUser(@RequestParam("currentUser") String currentUsername, @RequestParam("requestedUser") String requestedUsername) {
+	private Set<Project> findAllProjectsOfRequestedUser(@RequestParam("currentUser") String currentUsername, 
+							    @RequestParam("requestedUser") String requestedUsername) {
 		Set<Project> projects = projectService.findAllProjectsOfRequestedUser(currentUsername, requestedUsername);
 		return projects;
 	}
@@ -117,7 +121,8 @@ public class ProjectController {
 	 * @throws EmptyResultDataAccessException if Project with given Id was not present in the database
 	 */
 	@GetMapping("project")
-	private Project findProjectById(@RequestParam("currentUser") String currentUsername, @RequestParam("projectId") Integer id) {	
+	private Project findProjectById(@RequestParam("currentUser") String currentUsername, 
+					@RequestParam("projectId") Integer id) {	
 		Project project = projectService.findProjectById(id, currentUsername);
 		return project;
 	}
@@ -139,12 +144,14 @@ public class ProjectController {
 	 * Project in the database
 	 */
 	@PutMapping("project/modify")
-	private Project modifyProject(@RequestBody Project newProjectDetails, @RequestParam("user") String currentUsername) {
+	private Project modifyProject(@RequestBody Project newProjectDetails, 
+				      @RequestParam("user") String currentUsername) {
 		if (newProjectDetails.getUser() == null) {
 			throw new IllegalArgumentException("User credentials are invalid");
 		}
 		
 		User currentUser = userService.findUserByUsername(currentUsername);
+		
 		if (currentUser.getId() != newProjectDetails.getUser().getId() ||
 			!currentUser.getUsername().equals(newProjectDetails.getUser().getUsername()) ||
 			!currentUser.getPassword().equals(newProjectDetails.getUser().getPassword())) {
@@ -152,6 +159,7 @@ public class ProjectController {
 		}
 		
 		String name = newProjectDetails.getName();
+		
 		if (name == null || name.trim().isEmpty()) {
 			throw new IllegalArgumentException("Project name cannot be null or empty");
 		}
