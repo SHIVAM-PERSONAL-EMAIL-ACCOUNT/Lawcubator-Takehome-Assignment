@@ -106,7 +106,9 @@ public class ProjectService {
 
 	/**
 	 * Deletes a Project present in the database with given Id
-	 * 
+	 * <p>
+	 * The Project should belong to the current User 
+	 *
 	 * @param id Id of the Project to be deleted
 	 * @throws EmptyResultDataAccessException if Project with given Id was not present in the database
 	 * @throws IllegalArgumentException if the Project does not belong to the current User
