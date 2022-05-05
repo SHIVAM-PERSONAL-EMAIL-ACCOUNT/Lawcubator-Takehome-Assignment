@@ -129,6 +129,7 @@ public class ProjectService {
 	 */
 	public Set<Project> findAllProjectsOfRequestedUser(String currentUsername, String requestedUsername) {
 		User requestedUser = userService.findUserByUsername(requestedUsername);
+		
 		if (requestedUser == null) {
 			throw new IllegalArgumentException("User not present in the database");
 		}
