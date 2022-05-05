@@ -3,16 +3,22 @@
 ## Contents
 
 - Introduction
+- Features
 - Technologies Used
 - How to run Project
-- Testing Endpoints
 
 ## Introdution
 
 - Backend Application where Users can work with their Projects
-- Users can perform CRUD operations on their own projects
 - Users can view other users' projects if they are declared as PUBLIC
-- Users cannot create projects for other users' and they cannot modify or delete other users' projects
+
+## Features
+
+- A User can login or signup into the application
+- A User can view all their projects
+- A User can view other users' Public Projects
+- A User can view any Project by its Id, if the Id is valid. If the Project belongs to some other user then it needs to be a Public Project
+- A User can create, modify and delete a project for himself
 
 ## Technologies Used
 
