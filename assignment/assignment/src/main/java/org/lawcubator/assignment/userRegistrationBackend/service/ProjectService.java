@@ -109,8 +109,15 @@ public class ProjectService {
 	 * 
 	 * @param id Id of the Project to be deleted
 	 * @throws EmptyResultDataAccessException if Project with given Id was not present in the database
+	 * @throws IllegalArgumentException if the Project does not belong to the current User
 	 */
-	public void removeProject(Integer id) {
+	public void removeProject(Integer id, String currentUsername) {
+		try {
+			findProjectById(id, currentUsername);
+		} catch (IllegalArgumentException e) {
+			throw new IllegalArgumentException("Project does not belong to current user");
+		}
+		
 		projectRepository.deleteById(id);		
 	}
 

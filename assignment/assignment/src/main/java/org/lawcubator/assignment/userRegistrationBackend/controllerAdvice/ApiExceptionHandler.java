@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import io.jsonwebtoken.SignatureException;
+
 /**
  * Global Exception Handler of the application
  */
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
 	private static final String NO_DATA_ERROR_MESSAGE = "No data found with given input";
+	private static final String ILLEGAL_TOKEN_MESSAGE = "JSON Web Token is Invalid";
 	
 	/**
 	 * Handles {@code DataIntegrityViolationException} in the case of violation of any unique key constraints
@@ -56,5 +59,18 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(value = IllegalArgumentException.class)
 	private ResponseEntity<Object> handleIllegalAccess(RuntimeException rex, WebRequest wx) {
 		return handleExceptionInternal(rex, rex.getMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST, wx);
+	}
+	
+	/**
+	 * Handles {@code SignatureException} if the the JSON Web Token provided for authorization
+	 * was found to be invalid
+	 * 
+	 * @param rex The Exception encountered
+	 * @param wx The current Web Request
+	 * @return Response Entity with appropriate message and status
+	 */
+	@ExceptionHandler(value = SignatureException.class)
+	private ResponseEntity<Object> handleInvalidJSONWebToken(RuntimeException rex, WebRequest wx) {
+		return handleExceptionInternal(rex, ILLEGAL_TOKEN_MESSAGE, new HttpHeaders(), HttpStatus.FORBIDDEN, wx);
 	}
 }

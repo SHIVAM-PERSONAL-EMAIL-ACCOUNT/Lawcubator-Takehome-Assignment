@@ -173,7 +173,7 @@ public class ProjectController {
 	 * @throws EmptyResultDataAccessException if Project with given Id was not present in the database
 	 */
 	@DeleteMapping("project/remove")
-	private void removeProject(@RequestParam("projectId") Integer id) {
-		projectService.removeProject(id);
+	private void removeProject(@RequestParam("projectId") Integer id, @RequestParam("user") String currentUsername) {
+		projectService.removeProject(id, currentUsername);
 	}
 }

@@ -1,15 +1,20 @@
 package org.lawcubator.assignment.userRegistrationBackend.service;
 
+import java.util.ArrayList;
+
 import org.lawcubator.assignment.userRegistrationBackend.model.User;
 import org.lawcubator.assignment.userRegistrationBackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
  * Service Implementation that loads User specific data. 
  */
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
 	private final UserRepository userRepository;
 	
@@ -53,5 +58,11 @@ public class UserService {
 		String password = userToBeAuthenticated.getPassword();
 		User authentiatedUser = userRepository.findByUsernameAndPassword(username, password);
 		return authentiatedUser;
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User user = findUserByUsername(username);
+		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
 	}
 }
