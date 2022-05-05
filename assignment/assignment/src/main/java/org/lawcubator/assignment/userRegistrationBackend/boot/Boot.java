@@ -19,8 +19,7 @@ public final class Boot implements CommandLineRunner {
 	private final ProjectService projectService;
 	
 	@Autowired
-	public Boot(UserService userService, 
-				ProjectService projectService) {
+	public Boot(UserService userService, ProjectService projectService) {
 		this.userService = userService;
 		this.projectService = projectService;
 	}
