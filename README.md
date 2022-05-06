@@ -6,6 +6,7 @@
 - Features
 - Technologies Used
 - How to run Project
+- Sample API Endpoints
 
 ## Introdution
 
