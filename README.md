@@ -71,7 +71,7 @@ curl --location --request POST 'localhost:8080/userApi/v1/login' \
 
 Project API
 
-<b>Assumption</b>: The Username provided in the any requests params belongs to the same User whose JSON Web Token is being used
+<b>Assumption</b>: The Username provided in any requests params belongs to the same User whose JSON Web Token is being used
 
 - Add new Project
 
