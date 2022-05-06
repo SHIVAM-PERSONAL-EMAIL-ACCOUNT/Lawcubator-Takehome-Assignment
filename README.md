@@ -65,7 +65,7 @@ curl --location --request POST 'localhost:8080/userApi/v1/login' \
 }'
 ```
 
-#### Both the requests will respond with a JSON Web Token that has to be provided in every other request headers' 
+#### Both the requests will respond with a JSON Web Token that has to be provided in every other request's header 
 
 <br>
 
