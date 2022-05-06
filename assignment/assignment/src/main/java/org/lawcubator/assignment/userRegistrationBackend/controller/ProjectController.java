@@ -182,7 +182,7 @@ public class ProjectController {
 	 */
 	@DeleteMapping("project/remove")
 	private void removeProject(@RequestParam("projectId") Integer id, 
-							   @RequestParam("user") String currentUsername) {
+				   @RequestParam("user") String currentUsername) {
 		projectService.removeProject(id, currentUsername);
 	}
 }
