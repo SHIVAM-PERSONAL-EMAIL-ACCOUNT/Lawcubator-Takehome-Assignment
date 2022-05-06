@@ -28,8 +28,8 @@ public class UserController {
 
 	@Autowired
 	public UserController(UserService userService,
-						  AuthenticationManager authenticationManager,
-						  JWTUtil jwtUtil) {
+			      AuthenticationManager authenticationManager,
+			      JWTUtil jwtUtil) {
 		this.userService = userService;
 		this.authenticationManager = authenticationManager;
 		this.jwtUtil = jwtUtil;
