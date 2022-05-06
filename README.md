@@ -10,7 +10,7 @@
 ## Introdution
 
 - Backend Application where Users can work with their Projects
-- Users can view other users' projects if they are declared as PUBLIC
+- Users can view other Users' projects if they are declared as PUBLIC
 
 ## Features
 
