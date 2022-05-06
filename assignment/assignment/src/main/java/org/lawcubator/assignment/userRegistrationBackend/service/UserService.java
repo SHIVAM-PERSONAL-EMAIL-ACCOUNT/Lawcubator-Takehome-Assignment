@@ -40,24 +40,11 @@ public class UserService implements UserDetailsService {
 	 * Locates a user in the database with the given username
 	 * 
 	 * @param username Username of the user that needs to be located
-	 * @return Requested user, if found
+	 * @return Requested user, or null if the User was not present
 	 */
 	public User findUserByUsername(String username) {
 		User foundUser = userRepository.findByUsername(username);
 		return foundUser;
-	}
-
-	/**
-	 * Checks if a User with given credentials is present in the database or not
-	 * 
-	 * @param userToBeAuthenticated User that needs to be located in the database
-	 * @return User located in the database with the given credentials
-	 */
-	public User authenticateUser(User userToBeAuthenticated) {
-		String username = userToBeAuthenticated.getUsername();
-		String password = userToBeAuthenticated.getPassword();
-		User authentiatedUser = userRepository.findByUsernameAndPassword(username, password);
-		return authentiatedUser;
 	}
 
 	@Override

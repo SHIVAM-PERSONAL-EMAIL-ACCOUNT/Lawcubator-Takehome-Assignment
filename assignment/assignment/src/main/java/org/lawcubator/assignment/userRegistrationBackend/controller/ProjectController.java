@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Controller that is responsible for intercepting the Project specific requests
+ * Controller responsible for intercepting the Project specific requests
  */
 @RestController
 @RequestMapping(path = "projectApi/v1/")
@@ -40,7 +40,7 @@ public class ProjectController {
 	 * @param projectToBeSaved New Project to be saved in the database
 	 * @return Project saved to the database
 	 * @throws DataIntegrityViolationException if current Project name had already been taken by an existing 
-	 * project in the database
+	 * Project in the database
 	 * @throws IllegalArgumentException if the proposed Project name is null or empty or User of Project to be 
 	 * saved is not same as the current User
 	 */
@@ -79,7 +79,6 @@ public class ProjectController {
 	 * 
 	 * @param currentUsername User who is requesting the Projects
 	 * @return Set of all the Projects owned by all the Users except the requesting User
-	 * @throws IllegalArgumentException - if the requested User was not present in the database
 	 */
 	@GetMapping("other-projects/all")
 	private Set<Project> findAllPublicProjectsOfOtherUsers(@RequestParam("currentUser") String currentUsername) {
@@ -179,9 +178,11 @@ public class ProjectController {
 	 * 
 	 * @param id Id of the Project to be deleted
 	 * @throws EmptyResultDataAccessException if Project with given Id was not present in the database
+	 * @throws IllegalArgumentException if the Project does not belong to the current User
 	 */
 	@DeleteMapping("project/remove")
-	private void removeProject(@RequestParam("projectId") Integer id, @RequestParam("user") String currentUsername) {
+	private void removeProject(@RequestParam("projectId") Integer id, 
+							   @RequestParam("user") String currentUsername) {
 		projectService.removeProject(id, currentUsername);
 	}
 }

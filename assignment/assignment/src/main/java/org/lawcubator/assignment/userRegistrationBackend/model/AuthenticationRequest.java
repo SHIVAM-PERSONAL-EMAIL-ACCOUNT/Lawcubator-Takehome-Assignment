@@ -1,4 +1,4 @@
-package org.lawcubator.assignment.userRegistrationBackend.security.model;
+package org.lawcubator.assignment.userRegistrationBackend.model;
 
 /**
  * Represents the User credentials being sent by the User for registration

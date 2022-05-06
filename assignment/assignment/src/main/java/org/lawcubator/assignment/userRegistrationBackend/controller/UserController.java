@@ -1,9 +1,9 @@
 package org.lawcubator.assignment.userRegistrationBackend.controller;
 
+import org.lawcubator.assignment.userRegistrationBackend.model.AuthenticationRequest;
+import org.lawcubator.assignment.userRegistrationBackend.model.AuthenticationResponse;
 import org.lawcubator.assignment.userRegistrationBackend.model.User;
 import org.lawcubator.assignment.userRegistrationBackend.security.jwt.JWTUtil;
-import org.lawcubator.assignment.userRegistrationBackend.security.model.AuthenticationRequest;
-import org.lawcubator.assignment.userRegistrationBackend.security.model.AuthenticationResponse;
 import org.lawcubator.assignment.userRegistrationBackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -16,22 +16,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Controller that is responsible for intercepting the User specific requests
+ * Controller responsible for intercepting the User specific requests
  */
 @RestController
 @RequestMapping(path = "userApi/v1/")
 public class UserController {
 
-	@Autowired
-	private AuthenticationManager authenticationManager;
-	@Autowired
-	private JWTUtil jwtUtil;
-	
+	private final AuthenticationManager authenticationManager;
+	private final JWTUtil jwtUtil;
 	private final UserService userService;
 
 	@Autowired
-	public UserController(UserService userService) {
+	public UserController(UserService userService,
+						  AuthenticationManager authenticationManager,
+						  JWTUtil jwtUtil) {
 		this.userService = userService;
+		this.authenticationManager = authenticationManager;
+		this.jwtUtil = jwtUtil;
 	}
 	
 	/**

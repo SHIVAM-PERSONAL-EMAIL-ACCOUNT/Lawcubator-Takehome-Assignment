@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
- * Represents a Project that is going to be owned by a application User. 
+ * Represents a Project that is going to be owned by an application User. 
  * <p>
  * A Project has {@code many-to-one} relationship with a User
  */

@@ -27,7 +27,7 @@ public class ProjectService {
 	}
 
 	/**
-	 * Adds a new project to the database owned by a User already present in the database
+	 * Adds a new Project to the database owned by a User already present in the database
 	 * 
 	 * @param projectToBeSaved New Project to be saved in the database
 	 * @return Project saved to the database
@@ -124,7 +124,7 @@ public class ProjectService {
 	/**
 	 * Finds all the Projects currently owned by a User
 	 * <p>
-	 * If User who has requested the Projects and user whose Projects are being requested are same
+	 * If User who has requested the Projects and User whose Projects are being requested are same
 	 * then all the projects of the User present in the database will be returned. However,
 	 * if both are different, then only {@code Public} Projects of the requested User will be returned.
 	 * 

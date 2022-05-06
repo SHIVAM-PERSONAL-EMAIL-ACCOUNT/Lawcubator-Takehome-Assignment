@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * Represents user of the application
+ * Represents User of the application
  */
 @Entity
 public class User {

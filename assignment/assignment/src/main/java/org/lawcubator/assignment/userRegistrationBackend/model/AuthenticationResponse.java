@@ -1,4 +1,4 @@
-package org.lawcubator.assignment.userRegistrationBackend.security.model;
+package org.lawcubator.assignment.userRegistrationBackend.model;
 
 /**
  * Represents the JSON Web Token sent by the server to the User upon
@@ -6,13 +6,9 @@ package org.lawcubator.assignment.userRegistrationBackend.security.model;
  */
 public class AuthenticationResponse {
 
-	private String jwt;
+	private final String jwt;
 
 	public AuthenticationResponse(String jwt) {
-		this.jwt = jwt;
-	}
-
-	public void setJwt(String jwt) {
 		this.jwt = jwt;
 	}
 
