@@ -1,4 +1,4 @@
-# Lawcubator-Takehome-Assignment
+# Project Management Application Backend
 
 ## Contents
 
