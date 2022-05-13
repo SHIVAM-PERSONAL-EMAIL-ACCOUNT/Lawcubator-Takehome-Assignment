@@ -22,7 +22,7 @@
 - A User can create, modify and delete a project for himself
 
 - The application uses JWT Authentication and Authorization
-- A User will receive a JWT Token upon Signup and Login that he/she will use to access all the protected resources
+- A User will receive a JWT Token upon Signup and Login that he/she will use that to access all the protected resources
 - Requests with Invalid Token will not be processed
 
 ## Technologies Used
